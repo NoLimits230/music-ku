@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untuk Kamu 💗</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pink:#ff6fae;
+  --soft:#ffd1e6;
+  --bg:#fff0f7;
+  --dark:#7a2e55;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Poppins,system-ui;
+  background:linear-gradient(180deg,#ffe6f2,#fff);
+  color:var(--dark);
+  overflow-x:hidden;
+}
+
+/* FLOATING HEARTS */
+.hearts{position:fixed;inset:0;pointer-events:none;z-index:0}
+.heart{position:absolute;width:14px;height:14px;background:var(--pink);transform:rotate(45deg);opacity:.35;animation:float 12s linear infinite}
+.heart:before,.heart:after{content:'';position:absolute;width:14px;height:14px;background:var(--pink);border-radius:50%}
+.heart:before{left:-7px}
+.heart:after{top:-7px}
+@keyframes float{from{transform:translateY(110vh) rotate(45deg)}to{transform:translateY(-20vh) rotate(45deg)}}
+
+.page{min-height:100vh;display:none;align-items:center;justify-content:center;padding:20px;position:relative;z-index:1}
+.page.active{display:flex}
+
+.card{
+  background:white;
+  border-radius:26px;
+  box-shadow:0 25px 60px rgba(255,105,180,.3);
+  padding:28px;
+  max-width:420px;
+  width:100%;
+  text-align:center;
+  animation:fadeUp .8s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+h1,h2{font-family:'Playfair Display',serif}
+h1{font-size:2.2rem;margin:.2em 0}
+h2{font-size:1.6rem}
+
+button{
+  border:none;
+  border-radius:999px;
+  padding:14px 26px;
+  font-size:1rem;
+  font-weight:600;
+  background:var(--pink);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 10px 24px rgba(255,105,180,.35);
+}
+button.alt{background:#ff9fc9}
+
+/* TYPING */
+.typing{min-height:140px;line-height:1.8;font-size:1rem}
+
+/* GALLERY */
+.carousel{position:relative;margin-top:18px}
+.slides{display:flex;transition:transform .6s ease}
+.slide{
+  min-width:100%;
+  aspect-ratio:3/4;
+  border-radius:24px;
+  overflow:hidden;
+  position:relative;
+}
+.slide img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1)}
+.slide:after{content:'❤';position:absolute;bottom:12px;right:14px;font-size:1.4rem}
+
+.nav{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background:rgba(255,255,255,.95);
+  border:none;
+  border-radius:50%;
+  width:42px;
+  height:42px;
+  font-size:22px;
+  box-shadow:0 8px 22px rgba(0,0,0,.18);
+  cursor:pointer;
+  z-index:5;
+}
+.nav.prev{left:-14px}
+.nav.next{right:-14px}
+.nav.prev{left:-12px}
+.nav.next{right:-12px}
+
+/* ANGRY */
+.angry img{max-width:220px;border-radius:18px}
+</style>
+</head>
+<body>
+<div class="hearts" id="hearts"></div>
+
+<!-- QUIZ -->
+<section class="page active" id="quiz">
+  <div class="card">
+    <h1>Hai Kamu 💕</h1>
+    <p>Sebelum masuk, jawab jujur yaa 😉</p>
+    <h2>Siapa pacar kamu?</h2>
+    <div style="margin-top:20px;display:flex;gap:14px;justify-content:center">
+      <button onclick="goTyping()">Chandra 💖</button>
+      <button class="alt" onclick="show('angry')">Choisan 😈</button>
+    </div>
+  </div>
+</section>
+
+<!-- TYPING -->
+<section class="page" id="typing">
+  <div class="card">
+    <h1>💗</h1>
+    <div class="typing" id="typingText"></div>
+    <button id="toGallery" style="display:none;margin-top:18px" onclick="goGallery()">Lihat Kenangan Kita 💞</button>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="page" id="gallery">
+  <div class="card">
+    <h1>Kenangan Kita 💗</h1>
+    <p style="margin-top:-6px">Setiap foto punya cerita, dan ceritanya selalu tentang kita ✨</p>
+
+    <!-- DECOR -->
+    <div style="display:flex;justify-content:center;gap:8px;font-size:1.2rem;opacity:.8">💞 💐 🧸 💞</div>
+
+    <div class="carousel">
+      <button class="nav prev" onclick="prevSlide()">‹</button>
+      <div class="slides" id="slides">
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251118_163644_412.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251129_151913_418.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251129_151949_009.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251129_163338_076.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251105_135459_343.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251112_164629_912.jpg"></div>
+        <div class="slide"><img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/IMG_20251118_140243_674.jpg"></div>
+      </div>
+      <button class="nav next" onclick="nextSlide()">›</button>
+    </div>
+
+    <div style="margin-top:16px;font-size:.9rem;opacity:.75">Geser pelan yaa… kaya cara kita nikmatin waktu bareng 🤍</div>
+
+    <audio id="song" src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/ssstik.io_1765901023556.mp3" loop></audio>
+  </div>
+</section>
+
+<!-- ANGRY -->
+<section class="page" id="angry">
+  <div class="card angry">
+    <h1>😡 AKU MARAHHH</h1>
+    <p>Kok bisa-bisanya kamu milih itu sih 😤</p>
+    <img src="https://raw.githubusercontent.com/NoLimits230/music-ku/main/middlefing_2tnovi7q.gif">
+    <p style="margin-top:14px">Ini aku lagi kesel tapi tetep lucu 😈</p>
+    <div style="font-size:1.3rem">💢 💔 💢</div>
+    <p style="opacity:.8;font-size:.95rem">Udah ya bercanda… sekarang balik dan pilih yang bener 😜</p>
+    <button onclick="show('quiz')">Balik & Pilih Aku 💗</button>
+  </div>
+</section>
+
+<script>
+// hearts
+const hearts=document.getElementById('hearts');
+for(let i=0;i<20;i++){const h=document.createElement('div');h.className='heart';h.style.left=Math.random()*100+'%';h.style.animationDelay=Math.random()*10+'s';hearts.appendChild(h)}
+
+const show=id=>{document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active')}
+
+// typing
+const text="Cieee pilih gua nih 😆\n\nAku tau hidup kamu lagi berat. Banyak capeknya, banyak sakitnya. Tapi jangan nyerah ya. Setiap langkah kamu, inget… ada aku di sini. Orang yang tulus, yang sayang kamu banget 😉";
+let i=0;
+function goTyping(){show('typing');const el=document.getElementById('typingText');el.innerHTML='';i=0;const t=setInterval(()=>{el.innerHTML+=text.charAt(i);i++;if(i>=text.length){clearInterval(t);document.getElementById('toGallery').style.display='inline-block'}},45)}
+
+// gallery
+let index=0;
+const slides=document.getElementById('slides');
+function update(){slides.style.transform=`translateX(-${index*100}%)`}
+function nextSlide(){if(index<slides.children.length-1){index++;update()}}
+function prevSlide(){if(index>0){index--;update()}}
+function goGallery(){show('gallery');const a=document.getElementById('song');if(a.paused)a.play()}
+</script>
+</body>
+</html>
